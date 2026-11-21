@@ -42,6 +42,13 @@ class ExpenseTracker:
         for expense in self.expenses:
             totals[expense.category] = totals.get(expense.category,0) + expense.amount
         return totals
+
+    def delete(self, index: int) ->Expense:
+        removed = self.expenses.pop(index)
+        self.save()
+        return removed 
+    
+    
         
 
 

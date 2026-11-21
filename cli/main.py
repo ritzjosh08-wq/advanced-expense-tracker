@@ -12,7 +12,23 @@ def show_menu():
     print("2. view expense")
     print("3. Total spent")
     print("4. Total by category")
-    print("5. Exit")
+    print("5. Delete expense")
+    print("6. Exit")
+
+def delete_expense(tracker: ExpenseTracker) -> None:
+    if not tracker.expenses:
+        print("No expenses yet")
+        return
+    try:
+        number = int(input("Enter the number to delete?"))
+        if 1 <= number <= len(tracker.expenses):
+            removed = tracker.delete(number - 1)
+            print(f"Expense deleted: {removed}")
+        else:
+            print("Invalid expense number.")
+    except ValueError:
+        print("Please enter a valid number.")
+
 
 def ask_amount() -> float:
     while True:
@@ -78,6 +94,8 @@ def main() -> None:
         elif choice == "4":
             show_categories(tracker)
         elif choice == "5":
+            delete_expense(tracker)
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
