@@ -1,7 +1,7 @@
 import json
 from math import exp
 import os
-import od
+import os
 
 from models import Expense 
 
@@ -9,7 +9,7 @@ from models import Expense
 class ExpenseTracker:
     def __init__(self, data_file: str):
         self.data_file = data_file
-        self.expenses: list[Expense] = self.load_expenses()
+        self.expenses: list[Expense] = self.load()
 
     def load(self) -> list[Expense]:
         if not os.path.exists(self.data_file):
@@ -43,6 +43,7 @@ class ExpenseTracker:
             totals[expense.category] = totals.get(expense.category,0) + expense.amount
         return totals
         
+
 
 
 

@@ -2,7 +2,7 @@ from dataclasses import dataclass, asdict
 
 
 @dataclass
-class expense:
+class Expense:
     amount: float
     category: str
     note: str
